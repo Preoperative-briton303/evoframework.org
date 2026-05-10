@@ -1,0 +1,574 @@
+/*
+ * site.css - hand-rolled styles for evoframework.org
+ *
+ * Built on top of tokens.css. Visual register is lifted from
+ * evo-ui-eng so the website and the device UI feel like one project.
+ */
+
+/* ---- reset ------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 78% 8%,
+      color-mix(in oklab, var(--primary) 18%, transparent),
+      transparent 42%),
+    linear-gradient(
+      140deg,
+      color-mix(in oklab, var(--background) 95%, black) 0%,
+      color-mix(in oklab, var(--background) 80%, var(--accent)) 55%,
+      color-mix(in oklab, var(--background) 92%, black) 100%);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---- layout ------------------------------------------------------ */
+
+.site-header,
+.site-main,
+.site-footer {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+}
+
+.site-main {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+.site-footer {
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+  border-top: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  font-size: 0.92rem;
+  color: var(--muted-foreground);
+}
+
+.site-footer p {
+  margin: 0.35rem 0;
+}
+
+/* prose pages get a narrower measure for readability */
+.page,
+.section,
+.home {
+  max-width: 42rem;
+}
+
+.section .section-pages,
+.section .section-subsections {
+  max-width: none;
+  margin-top: 2.5rem;
+}
+
+/* ---- header / nav ----------------------------------------------- */
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--foreground);
+  letter-spacing: -0.01em;
+}
+
+.site-brand::before {
+  content: "";
+  display: inline-block;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 0.4rem;
+  background: linear-gradient(120deg, #00d4aa, #00a080);
+  box-shadow: 0 4px 14px color-mix(in oklab, var(--primary) 40%, transparent);
+}
+
+.site-brand-tm {
+  font-size: 0.55em;
+  vertical-align: super;
+  margin-left: 0.1em;
+  color: var(--muted-foreground);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  flex: 1;
+}
+
+.site-nav a {
+  color: color-mix(in oklab, var(--foreground) 70%, var(--muted-foreground));
+  text-decoration: none;
+  font-size: 0.96rem;
+  padding: 0.2rem 0.1rem;
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  color: var(--primary);
+  border-bottom-color: color-mix(in oklab, var(--primary) 50%, transparent);
+}
+
+.site-source {
+  color: var(--muted-foreground);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.site-source:hover,
+.site-source:focus {
+  color: var(--foreground);
+}
+
+/* ---- typography -------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 2.5rem 0 0.85rem;
+  color: var(--foreground);
+}
+
+h1 {
+  font-size: 2.4rem;
+  margin-top: 0;
+  background: linear-gradient(120deg,
+    var(--foreground) 30%,
+    var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--foreground);
+}
+
+h2 {
+  font-size: 1.55rem;
+  padding-bottom: 0.35rem;
+  margin-top: 3rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: color-mix(in oklab, var(--foreground) 92%, var(--primary));
+}
+
+h4 { font-size: 1rem; }
+
+p {
+  margin: 0 0 1rem;
+}
+
+.lead {
+  font-size: 1.18rem;
+  line-height: 1.55;
+  color: color-mix(in oklab, var(--foreground) 85%, var(--muted-foreground));
+  max-width: 38rem;
+}
+
+.page-header,
+.section-header {
+  margin-bottom: 2.25rem;
+}
+
+.page-description,
+.section-description {
+  font-size: 1.1rem;
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+  max-width: 38rem;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in oklab, var(--primary) 50%, transparent);
+}
+
+a:hover,
+a:focus {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+strong {
+  font-weight: 600;
+  color: color-mix(in oklab, var(--foreground) 95%, var(--primary));
+}
+
+em {
+  color: color-mix(in oklab, var(--foreground) 95%, var(--accent));
+}
+
+blockquote {
+  margin: 1.25rem 0;
+  padding: 0.6rem 1.1rem;
+  border-left: 3px solid var(--accent);
+  color: color-mix(in oklab, var(--foreground) 85%, var(--muted-foreground));
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  margin: 2.5rem 0;
+}
+
+ul, ol {
+  padding-left: 1.4rem;
+  margin: 0 0 1rem;
+}
+
+li {
+  margin: 0.3rem 0;
+}
+
+/* ---- code -------------------------------------------------------- */
+
+code,
+kbd,
+samp {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+}
+
+p code,
+li code,
+td code {
+  background: color-mix(in oklab, var(--muted) 90%, var(--primary) 12%);
+  color: var(--foreground);
+  padding: 0.1em 0.4em;
+  border-radius: 0.3rem;
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+}
+
+pre {
+  background: color-mix(in oklab, var(--card) 85%, black);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 1.25rem 0;
+  box-shadow: 0 6px 20px color-mix(in oklab, black 40%, transparent);
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* Giallo (Zola 0.22 syntax highlighter) classes. Required when
+ * [markdown.highlighting] is enabled. */
+.giallo-l {
+  display: inline-block;
+  min-height: 1lh;
+  width: 100%;
+}
+
+.giallo-ln {
+  display: inline-block;
+  user-select: none;
+  margin-right: 0.4em;
+  padding: 0.4em;
+  min-width: 3ch;
+  text-align: right;
+  opacity: 0.8;
+}
+
+/* ---- tables ----------------------------------------------------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.96rem;
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 50%, transparent);
+  vertical-align: top;
+}
+
+th {
+  font-weight: 600;
+  color: var(--foreground);
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---- homepage-specific ------------------------------------------ */
+
+.home {
+  max-width: 44rem;
+}
+
+.home h2 {
+  margin-top: 3.5rem;
+}
+
+/* hero sentence: large, lifted */
+.home-hero {
+  font-size: 2.6rem;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  background: linear-gradient(120deg,
+    var(--foreground) 0%,
+    var(--foreground) 55%,
+    var(--primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--foreground);
+}
+
+.home-subhead {
+  font-size: 1.18rem;
+  line-height: 1.55;
+  color: color-mix(in oklab, var(--foreground) 80%, var(--muted-foreground));
+  margin-bottom: 2rem;
+  max-width: 40rem;
+}
+
+.home-section-divider {
+  margin: 3rem 0 2rem;
+  border-top: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+}
+
+/* status pill (used on distribution cards, status sections) */
+.pill {
+  display: inline-block;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  line-height: 1;
+  padding: 0.32rem 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.pill-ok {
+  background: color-mix(in oklab, var(--status-ok) 22%, transparent);
+  color: var(--status-ok);
+  border: 1px solid color-mix(in oklab, var(--status-ok) 35%, transparent);
+}
+
+.pill-warn {
+  background: color-mix(in oklab, var(--status-warn) 22%, transparent);
+  color: var(--status-warn);
+  border: 1px solid color-mix(in oklab, var(--status-warn) 35%, transparent);
+}
+
+.pill-info {
+  background: color-mix(in oklab, var(--primary) 18%, transparent);
+  color: var(--primary);
+  border: 1px solid color-mix(in oklab, var(--primary) 35%, transparent);
+}
+
+.pill-muted {
+  background: color-mix(in oklab, var(--muted) 80%, transparent);
+  color: var(--muted-foreground);
+  border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+}
+
+/* card grid for distributions, doc entries, tier pictures */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1.1rem;
+  margin: 1.5rem 0;
+}
+
+.card {
+  background: color-mix(in oklab, var(--card) 90%, black);
+  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--foreground);
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.card p {
+  margin: 0;
+  color: color-mix(in oklab, var(--foreground) 85%, var(--muted-foreground));
+  font-size: 0.96rem;
+}
+
+.card-links {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+}
+
+.card-links a {
+  margin-right: 0.85rem;
+}
+
+/* CTA row at the bottom of the homepage */
+.cta-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.85rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.cta {
+  display: block;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--card) 85%, black);
+  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+.cta:hover,
+.cta:focus {
+  border-color: color-mix(in oklab, var(--primary) 60%, transparent);
+  color: var(--foreground);
+  box-shadow: 0 6px 20px color-mix(in oklab, var(--primary) 14%, transparent);
+}
+
+.cta strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  color: var(--primary);
+}
+
+.cta span {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--muted-foreground);
+}
+
+/* ---- section page-list ------------------------------------------ */
+
+.section-pages h2,
+.section-subsections h2 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted-foreground);
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.section-pages ul,
+.section-subsections ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section-pages li,
+.section-subsections li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 50%, transparent);
+}
+
+/* ---- responsive tweaks ------------------------------------------- */
+
+@media (max-width: 720px) {
+  body {
+    font-size: 17px;
+  }
+  .site-header {
+    gap: 0.6rem;
+  }
+  .site-nav {
+    gap: 0.85rem;
+    width: 100%;
+    order: 3;
+  }
+  .home-hero { font-size: 2rem; }
+  h1 { font-size: 1.85rem; }
+  h2 { font-size: 1.3rem; }
+}
+
+/* ---- print ------------------------------------------------------- */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  .site-header,
+  .site-footer,
+  .site-nav,
+  .cta-row {
+    display: none;
+  }
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+}

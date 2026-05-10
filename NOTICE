@@ -1,0 +1,18 @@
+evoframework.org
+
+Copyright (c) 2026 Just a Nerd
+
+This product (the source of the evo framework's public website) is
+distributed under the Apache License, Version 2.0. See LICENSE.
+
+evo and evoframework are trademarks of Just a Nerd. The Apache License
+does not grant rights to use the trademarks. Use of the marks is
+governed by TRADEMARK.md at the root of this repository.
+
+This site reuses design tokens (CSS custom properties) vendored from
+the evo-ui-eng repository, which is also distributed under the Apache
+License, Version 2.0.
+
+Third-party components, if any (fonts, libraries, vendored snippets),
+carry their own copyright and license notices and retain those notices
+in their respective files.

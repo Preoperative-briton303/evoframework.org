@@ -1,0 +1,151 @@
+/*
+ * tokens.css - design tokens for the evo project
+ *
+ * Vendored from evo-ui-eng (apps/evo-ui-shell/src/styles.css). Keep in
+ * sync by hand when the device UI tokens change. The set of themes
+ * matches the device UI so the website and the device feel like one
+ * project visually.
+ *
+ * Usage: apply one of the .theme-* classes to <body>. The :root block
+ * carries the default (Evo Default).
+ */
+
+:root {
+  /* Adopted from CONCEPT delivered theme tokens (Evo Default). */
+  --background: oklch(0.08 0.03 250);
+  --foreground: oklch(0.95 0.01 220);
+  --card: oklch(0.12 0.04 255);
+  --card-foreground: oklch(0.95 0.01 220);
+  --primary: oklch(0.75 0.18 195);
+  --primary-foreground: oklch(0.08 0.03 250);
+  --secondary: oklch(0.16 0.05 250);
+  --secondary-foreground: oklch(0.95 0.01 220);
+  --muted: oklch(0.16 0.05 250);
+  --muted-foreground: oklch(0.65 0.03 230);
+  --accent: oklch(0.75 0.18 195);
+  --accent-foreground: oklch(0.08 0.03 250);
+  --destructive: oklch(0.65 0.2 25);
+  --border: oklch(0.25 0.05 255);
+  --input: oklch(0.16 0.05 250);
+  --ring: oklch(0.75 0.18 195);
+  --radius: 0.75rem;
+
+  --status-ok: oklch(0.7 0.17 145);
+  --status-warn: oklch(0.75 0.15 85);
+  --status-fail: oklch(0.65 0.2 25);
+}
+
+.theme-evo-default {
+  --background: oklch(0.08 0.03 250);
+  --foreground: oklch(0.95 0.01 220);
+  --card: oklch(0.12 0.04 255);
+  --card-foreground: oklch(0.95 0.01 220);
+  --primary: oklch(0.75 0.18 195);
+  --primary-foreground: oklch(0.08 0.03 250);
+  --secondary: oklch(0.16 0.05 250);
+  --secondary-foreground: oklch(0.95 0.01 220);
+  --muted: oklch(0.16 0.05 250);
+  --muted-foreground: oklch(0.65 0.03 230);
+  --accent: oklch(0.75 0.18 195);
+  --accent-foreground: oklch(0.08 0.03 250);
+  --border: oklch(0.25 0.05 255);
+  --input: oklch(0.16 0.05 250);
+  --ring: oklch(0.75 0.18 195);
+}
+
+.theme-night-sky {
+  --background: oklch(0.08 0.04 280);
+  --foreground: oklch(0.95 0.02 280);
+  --card: oklch(0.12 0.05 275);
+  --card-foreground: oklch(0.95 0.02 280);
+  --primary: oklch(0.7 0.2 300);
+  --primary-foreground: oklch(0.12 0.03 280);
+  --secondary: oklch(0.16 0.06 270);
+  --secondary-foreground: oklch(0.95 0.02 280);
+  --muted: oklch(0.16 0.06 270);
+  --muted-foreground: oklch(0.65 0.04 290);
+  --accent: oklch(0.65 0.18 250);
+  --accent-foreground: oklch(0.12 0.03 280);
+  --border: oklch(0.3 0.08 275);
+  --input: oklch(0.16 0.06 270);
+  --ring: oklch(0.7 0.2 300);
+}
+
+.theme-sunrise {
+  --background: oklch(0.14 0.02 50);
+  --foreground: oklch(0.95 0.02 60);
+  --card: oklch(0.18 0.025 48);
+  --card-foreground: oklch(0.95 0.02 60);
+  --primary: oklch(0.72 0.14 45);
+  --primary-foreground: oklch(0.18 0.03 40);
+  --secondary: oklch(0.22 0.03 45);
+  --secondary-foreground: oklch(0.95 0.02 60);
+  --muted: oklch(0.22 0.03 45);
+  --muted-foreground: oklch(0.65 0.03 55);
+  --accent: oklch(0.78 0.12 85);
+  --accent-foreground: oklch(0.18 0.03 40);
+  --border: oklch(0.32 0.04 48);
+  --input: oklch(0.22 0.03 45);
+  --ring: oklch(0.72 0.14 45);
+}
+
+.theme-air {
+  --background: oklch(0.96 0.005 240);
+  --foreground: oklch(0.2 0.02 240);
+  --card: oklch(0.98 0.003 240);
+  --card-foreground: oklch(0.2 0.02 240);
+  --primary: oklch(0.55 0.12 230);
+  --primary-foreground: oklch(0.98 0.005 230);
+  --secondary: oklch(0.93 0.008 235);
+  --secondary-foreground: oklch(0.2 0.02 240);
+  --muted: oklch(0.93 0.008 235);
+  --muted-foreground: oklch(0.45 0.02 235);
+  --accent: oklch(0.65 0.1 200);
+  --accent-foreground: oklch(0.2 0.02 240);
+  --border: oklch(0.85 0.01 235);
+  --input: oklch(0.93 0.008 235);
+  --ring: oklch(0.55 0.12 230);
+}
+
+.theme-liquid {
+  --background: oklch(0.1 0.05 230);
+  --foreground: oklch(0.94 0.02 210);
+  --card: oklch(0.14 0.06 225);
+  --card-foreground: oklch(0.94 0.02 210);
+  --primary: oklch(0.68 0.16 220);
+  --primary-foreground: oklch(0.1 0.04 230);
+  --secondary: oklch(0.18 0.07 220);
+  --secondary-foreground: oklch(0.94 0.02 210);
+  --muted: oklch(0.18 0.07 220);
+  --muted-foreground: oklch(0.62 0.04 215);
+  --accent: oklch(0.72 0.14 190);
+  --accent-foreground: oklch(0.1 0.04 230);
+  --border: oklch(0.3 0.08 225);
+  --input: oklch(0.18 0.07 220);
+  --ring: oklch(0.68 0.16 220);
+}
+
+/*
+ * Optional: respect the operating system preference. Comment in to
+ * have the site auto-switch between Evo Default (dark) and Air (light).
+ *
+ * @media (prefers-color-scheme: light) {
+ *   :root {
+ *     --background: oklch(0.96 0.005 240);
+ *     --foreground: oklch(0.2 0.02 240);
+ *     --card: oklch(0.98 0.003 240);
+ *     --card-foreground: oklch(0.2 0.02 240);
+ *     --primary: oklch(0.55 0.12 230);
+ *     --primary-foreground: oklch(0.98 0.005 230);
+ *     --secondary: oklch(0.93 0.008 235);
+ *     --secondary-foreground: oklch(0.2 0.02 240);
+ *     --muted: oklch(0.93 0.008 235);
+ *     --muted-foreground: oklch(0.45 0.02 235);
+ *     --accent: oklch(0.65 0.1 200);
+ *     --accent-foreground: oklch(0.2 0.02 240);
+ *     --border: oklch(0.85 0.01 235);
+ *     --input: oklch(0.93 0.008 235);
+ *     --ring: oklch(0.55 0.12 230);
+ *   }
+ * }
+ */

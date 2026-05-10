@@ -1,0 +1,18 @@
+# Zola build output
+public/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Node, just in case any tooling shows up later
+node_modules/
+
+# Local env / secrets
+.env
+.env.*
