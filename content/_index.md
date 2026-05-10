@@ -5,9 +5,10 @@ template = "index.html"
 sort_by = "weight"
 +++
 
-<p class="home-hero">
-Everything is a plugin. The framework just stewards them.
-</p>
+<div class="home-hero-layout">
+<div class="home-hero-text">
+
+<h1 class="home-hero">Everything is a plugin. The framework just stewards them.</h1>
 
 <p class="home-subhead">
 Evo is a Rust framework for appliance-class devices where features
@@ -16,6 +17,20 @@ knows nothing about the domain. Adding a capability is a new plugin.
 Replacing one is replacing one signed file. The system stays
 coherent as the plugin set grows.
 </p>
+
+</div>
+
+<div class="home-hero-visual" aria-hidden="true">
+<div class="hero-mark">
+<div class="hero-mark-glyph"></div>
+<span class="hero-mark-dot hero-mark-dot-1"></span>
+<span class="hero-mark-dot hero-mark-dot-2"></span>
+<span class="hero-mark-dot hero-mark-dot-3"></span>
+</div>
+</div>
+</div>
+
+<hr class="section-divider">
 
 ## The problem
 
@@ -83,29 +98,103 @@ other.
 - The integration cost of the plugin ecosystem stays flat as it
   grows. Plugin authors learn the contract once.
 
+<hr class="section-divider">
+
 ## Three tiers
 
 Evo is not framework + your app. It is three tiers, each with its
 own release cadence, its own signing key, and its own job.
 
-```
-DISTRIBUTION   evo-device-<vendor>      catalogue . plugins
-                                        branding . packaging
-                            |
-                            v
-STEWARD        evo-core                 catalogue . admission
-                                        subjects . relations
-                                        custody ledger
-                                        projections . happenings
-                            |
-                            v
-CONSUMERS      frontend . CLIs . bridges . automation
-```
+<div class="tier-diagram-wrap">
+<svg class="tier-diagram" viewBox="0 0 800 660" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="tier-diagram-title tier-diagram-desc">
+<title id="tier-diagram-title">Three tiers: distribution, steward, consumers</title>
+<desc id="tier-diagram-desc">A vertical architecture diagram. The distribution tier feeds the steward at the centre across four contracts at the boundary; the steward serves consumers below across the client socket.</desc>
 
-The framework holds the middle. Distributions adopt reference
-generic devices and add the vendor layer. Devices fetch what each
-manifest names, on the channel they track. None of these tiers know
-about each other except through the contracts.
+<defs>
+<linearGradient id="tier-bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#0e1d30"/>
+<stop offset="55%" stop-color="#102a44"/>
+<stop offset="100%" stop-color="#0a1828"/>
+</linearGradient>
+
+<linearGradient id="steward-bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#0d2236"/>
+<stop offset="50%" stop-color="#143a5c"/>
+<stop offset="100%" stop-color="#0a1d30"/>
+</linearGradient>
+
+<linearGradient id="brand-mark-grad" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#00d4aa"/>
+<stop offset="100%" stop-color="#00a080"/>
+</linearGradient>
+
+<filter id="tier-glow" x="-10%" y="-15%" width="120%" height="130%">
+<feGaussianBlur stdDeviation="4" result="blur"/>
+<feFlood flood-color="#00d4aa" flood-opacity="0.18"/>
+<feComposite in2="blur" operator="in" result="glow"/>
+<feMerge>
+<feMergeNode in="glow"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+
+<filter id="steward-glow" x="-10%" y="-15%" width="120%" height="130%">
+<feGaussianBlur stdDeviation="7" result="blur"/>
+<feFlood flood-color="#00d4aa" flood-opacity="0.32"/>
+<feComposite in2="blur" operator="in" result="glow"/>
+<feMerge>
+<feMergeNode in="glow"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+
+<marker id="arrow" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+<path d="M2,2 L10,6 L2,10 z" fill="#00d4aa"/>
+</marker>
+</defs>
+
+<g filter="url(#tier-glow)">
+<rect x="80" y="20" width="640" height="140" rx="18" fill="url(#tier-bg)" stroke="#1f3a5c" stroke-width="1"/>
+<rect x="80" y="20" width="640" height="3" rx="1.5" fill="url(#brand-mark-grad)" opacity="0.7"/>
+</g>
+<text x="400" y="64" text-anchor="middle" class="svg-tier-label">DISTRIBUTION</text>
+<text x="400" y="92" text-anchor="middle" class="svg-tier-subtitle">evo-device-&lt;vendor&gt;</text>
+<text x="400" y="128" text-anchor="middle" class="svg-tier-content">catalogue . plugins . branding . packaging</text>
+
+<line class="svg-connector" x1="400" y1="170" x2="400" y2="220" stroke="#00d4aa" stroke-width="2" stroke-dasharray="4 5" marker-end="url(#arrow)"/>
+<text x="420" y="200" class="svg-connector-label">four contracts at the boundary</text>
+
+<g filter="url(#steward-glow)">
+<rect x="60" y="240" width="680" height="200" rx="20" fill="url(#steward-bg)" stroke="#256086" stroke-width="1.5"/>
+<rect x="60" y="240" width="680" height="4" rx="2" fill="url(#brand-mark-grad)"/>
+<g transform="translate(696, 256)">
+<rect width="22" height="22" rx="5" fill="url(#brand-mark-grad)"/>
+</g>
+</g>
+<text x="400" y="294" text-anchor="middle" class="svg-tier-label svg-tier-label-strong">THE STEWARD</text>
+<text x="400" y="326" text-anchor="middle" class="svg-tier-subtitle">evo-core</text>
+<text x="400" y="368" text-anchor="middle" class="svg-tier-content">catalogue . admission . subjects . relations</text>
+<text x="400" y="396" text-anchor="middle" class="svg-tier-content">custody ledger . projections . happenings bus</text>
+
+<line class="svg-connector" x1="400" y1="450" x2="400" y2="500" stroke="#00d4aa" stroke-width="2" stroke-dasharray="4 5" marker-end="url(#arrow)"/>
+<text x="420" y="480" class="svg-connector-label">client socket</text>
+
+<g filter="url(#tier-glow)">
+<rect x="80" y="520" width="640" height="120" rx="18" fill="url(#tier-bg)" stroke="#1f3a5c" stroke-width="1"/>
+<rect x="80" y="520" width="640" height="3" rx="1.5" fill="url(#brand-mark-grad)" opacity="0.7"/>
+</g>
+<text x="400" y="568" text-anchor="middle" class="svg-tier-label">CONSUMERS</text>
+<text x="400" y="608" text-anchor="middle" class="svg-tier-content">frontend . CLIs . bridges . automation</text>
+</svg>
+
+<p class="tier-diagram-caption">
+The framework holds the middle. Distributions adopt reference generic
+devices and add the vendor layer. None of these tiers know about each
+other except through the contracts.
+</p>
+</div>
+
+<hr class="section-divider">
 
 ## A real device exists
 
@@ -143,6 +232,8 @@ branding, and packaging on top.</p>
 </div>
 
 </div>
+
+<hr class="section-divider">
 
 ## Sixty seconds
 
@@ -192,30 +283,99 @@ print(base64.b64decode(resp["payload_b64"]).decode())  # -> "hello"
 The full client protocol with example clients in seven languages is
 in [CLIENT_API.md](https://github.com/foonerd/evo-core/blob/main/docs/engineering/CLIENT_API.md).
 
+<hr class="section-divider">
+
 ## The words evo uses
 
 Evo's vocabulary is load-bearing. Every word below appears with the
 same meaning across the framework, the documentation, and the
 catalogue files.
 
-| Word | Role |
-|------|------|
-| Steward | Sole authority. Admits plugins, places contributions, composes projections, dispatches actions, emits notifications. |
-| Catalogue | The data document that declares the device's concerns. Read by the steward at startup. |
-| Rack | A concern. Belongs to a family (domain, coordination, infrastructure) and a kind (producer, transformer, presenter, registrar). |
-| Shelf | A slot or slot-set of declared shape within a rack. |
-| Slot | A typed opening that admits one or more plugin contributions. |
-| Plugin | Any capability that stocks a slot. The only entity in the running system that is not the steward. |
-| Subject | A thing the catalogue has opinions about. Canonical identity held by the steward; reconciles plugin-specific addressings. |
-| Relation | Typed directed connection between subjects. |
-| Projection | Composed view emitted by the steward, keyed to a rack or a subject. |
-| Happening | A transition event the steward emits on its notification stream. |
-| Appointment | Time-originated instruction. |
-| Watch | Condition-originated instruction. |
-| Custody ledger | Registry of active warden assignments and their state. |
-| Fast path | Real-time mutation channel alongside the structural slow path. |
-| Distribution | A curated catalogue plus plugin set, shipped as a branded device. |
-| Essence | The single sentence the steward enforces at startup and on admission. |
+<div class="vocabulary-grid">
+
+<div class="vocab-cell">
+<span class="vocab-term">Steward</span>
+<span class="vocab-role">Sole authority. Admits, places, composes, dispatches, projects, notifies.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Catalogue</span>
+<span class="vocab-role">Declared data. Racks, shelves, slots, shapes, relation grammar.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Rack</span>
+<span class="vocab-role">A concern. Holds shelves. Belongs to a family and a kind.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Shelf</span>
+<span class="vocab-role">A slot or slot-set of declared shape within a rack.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Slot</span>
+<span class="vocab-role">A typed opening that admits one or more plugin contributions.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Plugin</span>
+<span class="vocab-role">Any capability that stocks a slot. The only entity besides the steward.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Subject</span>
+<span class="vocab-role">A thing the catalogue has opinions about. Canonical identity held by the steward.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Relation</span>
+<span class="vocab-role">Typed directed connection between subjects.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Projection</span>
+<span class="vocab-role">Composed view emitted by the steward, keyed to a rack or a subject.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Happening</span>
+<span class="vocab-role">A transition event the steward emits on its notification stream.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Appointment</span>
+<span class="vocab-role">Time-originated instruction.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Watch</span>
+<span class="vocab-role">Condition-originated instruction.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Custody ledger</span>
+<span class="vocab-role">Registry of active warden assignments and their state.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Fast path</span>
+<span class="vocab-role">Real-time mutation channel alongside the structural slow path.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Distribution</span>
+<span class="vocab-role">A curated catalogue plus plugin set, shipped as a branded device.</span>
+</div>
+
+<div class="vocab-cell">
+<span class="vocab-term">Essence</span>
+<span class="vocab-role">The single sentence the steward enforces at startup and on admission.</span>
+</div>
+
+</div>
+
+<hr class="section-divider">
 
 ## Where to go next
 
