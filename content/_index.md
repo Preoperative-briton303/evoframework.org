@@ -97,6 +97,15 @@ other.
   not a rebuild and a re-flash.
 - The integration cost of the plugin ecosystem stays flat as it
   grows. Plugin authors learn the contract once.
+- Anywhere with a CPU, RAM, and a bit of storage is in scope. From
+  a wearable counting heart-rate to a datacenter inference rack, the
+  same fabric vocabulary applies.
+
+The framework runs on Unix today (eight architectures, three ARM
+profiles, glibc and musl). The contracts the framework defines do
+not assume Unix; ports to RTOS, bare-metal, and embedded runtimes
+are open invitations. The
+[distributions page](/distributions/) shows the spread.
 
 <hr class="section-divider">
 

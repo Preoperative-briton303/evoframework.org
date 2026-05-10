@@ -10,6 +10,17 @@ The Build section is split by what you are starting. Each path below
 points at the smallest set of contracts you have to know to make
 progress, then the engineering docs that elaborate them.
 
+## What runs evo
+
+Anything with a CPU, some RAM, and a little storage. The framework
+runs on Unix today (Linux primarily, eight architectures, three ARM
+profiles, glibc and musl) and the contracts the framework defines
+do not assume Unix. Hardware classes the framework is designed for
+range from MCU-class wearables and sensors at the small end, through
+single-board appliances and automotive compute units in the middle,
+to edge gateways and inference servers at the large end. The
+[distributions page](/distributions/) shows the spread visually.
+
 ## I am writing a plugin
 
 You want a single artefact that stocks a slot in someone's
@@ -68,10 +79,46 @@ worked example for "how to scaffold a brand-neutral plugin set for a
 domain" is `evo-device-audio` itself.
 
 The vendor-side methodology, with every release plane, signing key,
-and CI workflow named, is documented as a separate showcase
-artefact. It is written so that anywhere it names a specific brand
-or target hardware, a future vendor reads their own brand and their
-own hardware; the pattern survives the substitution.
+and CI workflow named, is documented as a separate showcase artefact.
+It is written so that anywhere it names a specific brand or target
+hardware, a future vendor reads their own brand and their own
+hardware; the pattern survives the substitution.
+
+### Targets
+
+The framework is pure Rust, no C dependencies, Unix-native today.
+Cross-compilation is straightforward; the `cargo` toolchain plus
+`cross` covers every architecture below. The supported target list
+on the day of writing:
+
+- `x86_64-unknown-linux-gnu` and `x86_64-unknown-linux-musl`
+- `aarch64-unknown-linux-gnu` and `aarch64-unknown-linux-musl`
+- `armv7-unknown-linux-gnueabihf` and `armv7-unknown-linux-musleabihf`
+- `arm-unknown-linux-gnueabihf` (ARMv6 - Raspberry Pi 1 / Zero W)
+- `aarch64-linux-android` (Android Bionic)
+
+Eight architectures, three ARM profiles, glibc and musl. Yocto is a
+straight pull-in for any of the targets above.
+
+The architecture is OS-neutral in spirit. The plugin contract reduces
+to a respond/take-custody shape, and the steward's job - admit the
+catalogue, place contributions, compose projections, dispatch
+actions, emit notifications - is expressible in any reasonable
+runtime. Ports beyond Unix are an open invitation:
+
+- **RTOS** (FreeRTOS, Zephyr) for hard-real-time controllers.
+- **Bare-metal Cortex-M** for sensor and wearable devices.
+- **Embedded WASM** for sandboxed plugin distribution to constrained
+  environments.
+- **Constrained RISC-V** profiles for purpose-built ASIC pairings.
+- **GPU-augmented** Linux (NVIDIA Jetson, datacenter inference) for
+  larger workloads, where plugins encapsulate model lifecycles
+  rather than process lifecycles.
+
+The fabric vocabulary - catalogue, racks, shelves, slots, plugins,
+subjects, projections, happenings, custody, fast path - applies at
+every scale. The same word means the same thing on a wristwatch and
+on a datacenter rack.
 
 ## I am running a device
 

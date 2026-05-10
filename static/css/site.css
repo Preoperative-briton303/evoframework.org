@@ -738,11 +738,127 @@ tr:last-child td {
 @media (prefers-reduced-motion: reduce) {
   .svg-connector,
   .hub-diagram circle[r],
-  .hub-diagram animateMotion {
+  .hub-diagram animateMotion,
+  .reach-diagram circle[r] {
     animation: none !important;
   }
-  .hub-diagram circle[r] {
+  .hub-diagram circle[r],
+  .reach-diagram circle[r] {
     display: none;
+  }
+}
+
+/* Reach diagram (distributions page) ------------------------ */
+
+.reach-diagram-wrap {
+  margin: 2rem auto 1.5rem;
+  padding: 1rem 0;
+  position: relative;
+  isolation: isolate;
+  max-width: none;
+}
+
+.reach-diagram-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%,
+      color-mix(in oklab, var(--primary) 6%, transparent),
+      transparent 75%);
+  z-index: -1;
+}
+
+.reach-diagram {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.reach-diagram-caption {
+  margin: 1.25rem auto 0;
+  max-width: 44rem;
+  font-size: 0.95rem;
+  color: var(--muted-foreground);
+  text-align: center;
+  font-style: italic;
+}
+
+.reach-card-title {
+  fill: #00d4aa;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.reach-card-arch {
+  fill: #7ea0bc;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.reach-card-examples {
+  fill: #d8e4f0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.reach-band-title {
+  fill: #00d4aa;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.reach-band-subtitle {
+  fill: #7ea0bc;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 0.03em;
+}
+
+.reach-scale-label {
+  fill: #d8e4f0;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.reach-scale-sublabel {
+  fill: #6a8aa5;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.reach-bottom-text {
+  fill: #d8e4f0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-style: italic;
+}
+
+.section .reach-diagram-wrap {
+  max-width: none;
+  margin-left: -2rem;
+  margin-right: -2rem;
+}
+
+@media (max-width: 720px) {
+  .section .reach-diagram-wrap {
+    margin-left: -1rem;
+    margin-right: -1rem;
   }
 }
 
