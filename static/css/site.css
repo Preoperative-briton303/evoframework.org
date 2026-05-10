@@ -862,6 +862,191 @@ tr:last-child td {
   }
 }
 
+/* Flow diagram (build page) -------------------------------- */
+
+.flow-diagram-wrap {
+  margin: 2rem auto 1.5rem;
+  padding: 1rem 0;
+  position: relative;
+  isolation: isolate;
+  max-width: none;
+}
+
+.flow-diagram-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 50%,
+      color-mix(in oklab, var(--primary) 8%, transparent),
+      transparent 75%);
+  z-index: -1;
+}
+
+.flow-diagram {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.flow-diagram-caption {
+  margin: 1.5rem auto 0;
+  max-width: 44rem;
+  font-size: 0.95rem;
+  color: var(--muted-foreground);
+  text-align: center;
+  font-style: italic;
+}
+
+.flow-card-title {
+  fill: #00d4aa;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.flow-card-title-large {
+  font-size: 30px;
+  letter-spacing: 0.04em;
+}
+
+.flow-card-subtitle {
+  fill: #7ea0bc;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+.flow-card-content {
+  fill: #d8e4f0;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+
+.flow-card-content-sm {
+  fill: #b3c5d6;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+.section .flow-diagram-wrap {
+  max-width: none;
+  margin-left: -2rem;
+  margin-right: -2rem;
+}
+
+@media (max-width: 720px) {
+  .section .flow-diagram-wrap {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+}
+
+/* 404 / error page ----------------------------------------- */
+
+.error-page {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding-top: 2rem;
+  text-align: center;
+  position: relative;
+  isolation: isolate;
+}
+
+.error-art-wrap {
+  position: relative;
+  width: clamp(280px, 50vw, 460px);
+  aspect-ratio: 1 / 1;
+  margin: 1rem auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-art {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.error-code {
+  font-size: clamp(4rem, 12vw, 7.5rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  background: linear-gradient(120deg,
+    var(--foreground) 0%,
+    var(--primary) 50%,
+    var(--foreground) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--foreground);
+  animation: error-code-shimmer 6s ease-in-out infinite;
+}
+
+@keyframes error-code-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+.error-message {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--foreground);
+  margin: 0 0 0.85rem;
+  letter-spacing: -0.01em;
+}
+
+.error-detail {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--muted-foreground);
+  max-width: 32rem;
+  margin: 0 auto 2.5rem;
+  font-style: italic;
+}
+
+.error-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+@keyframes error-ring-pulse-1 {
+  0%   { transform: scale(0.5); opacity: 0; }
+  20%  { opacity: 0.5; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes error-ring-pulse-2 {
+  0%   { transform: scale(0.5); opacity: 0; }
+  20%  { opacity: 0.4; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .error-code {
+    animation: none;
+  }
+  .error-art .err-ring {
+    animation: none !important;
+    opacity: 0.3 !important;
+  }
+}
+
 /* status pill ---------------------------------------------- */
 
 .pill {

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}404 - {{ config.title }}{% endblock %}
+{% block description %}404 - the subject you asked for is not in this catalogue.{% endblock %}
+
+{% block content %}
+<article class="error-page">
+  <div class="error-art-wrap">
+    <svg class="error-art" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The steward searching for a missing slot">
+      <defs>
+        <linearGradient id="err-brand" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#00d4aa"/>
+          <stop offset="100%" stop-color="#00a080"/>
+        </linearGradient>
+        <radialGradient id="err-glow-bg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#00d4aa" stop-opacity="0.20"/>
+          <stop offset="55%" stop-color="#00d4aa" stop-opacity="0.05"/>
+          <stop offset="100%" stop-color="#00d4aa" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="err-particle-glow" x="-200%" y="-200%" width="500%" height="500%">
+          <feGaussianBlur stdDeviation="2.2" result="blur"/>
+          <feFlood flood-color="#00d4aa" flood-opacity="0.95"/>
+          <feComposite in2="blur" operator="in" result="glow"/>
+          <feMerge>
+            <feMergeNode in="glow"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <filter id="err-mark-glow" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="9" result="blur"/>
+          <feFlood flood-color="#00d4aa" flood-opacity="0.55"/>
+          <feComposite in2="blur" operator="in" result="glow"/>
+          <feMerge>
+            <feMergeNode in="glow"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <rect x="0" y="0" width="400" height="400" fill="url(#err-glow-bg)"/>
+
+      <circle cx="200" cy="200" r="100" fill="none" stroke="#1f3a5c" stroke-width="1" opacity="0.45"/>
+      <circle cx="200" cy="200" r="140" fill="none" stroke="#1f3a5c" stroke-width="1" stroke-dasharray="2 5" opacity="0.32"/>
+      <circle cx="200" cy="200" r="180" fill="none" stroke="#1f3a5c" stroke-width="1" stroke-dasharray="2 5" opacity="0.22"/>
+
+      <circle cx="200" cy="200" fill="none" stroke="#00d4aa" stroke-width="1" stroke-dasharray="3 6">
+        <animate attributeName="r" values="50;185" dur="4s" repeatCount="indefinite" begin="0s"/>
+        <animate attributeName="opacity" values="0;0.55;0" dur="4s" repeatCount="indefinite" begin="0s"/>
+      </circle>
+      <circle cx="200" cy="200" fill="none" stroke="#00d4aa" stroke-width="1" stroke-dasharray="3 6">
+        <animate attributeName="r" values="50;185" dur="4s" repeatCount="indefinite" begin="1.33s"/>
+        <animate attributeName="opacity" values="0;0.5;0" dur="4s" repeatCount="indefinite" begin="1.33s"/>
+      </circle>
+      <circle cx="200" cy="200" fill="none" stroke="#00d4aa" stroke-width="1" stroke-dasharray="3 6">
+        <animate attributeName="r" values="50;185" dur="4s" repeatCount="indefinite" begin="2.66s"/>
+        <animate attributeName="opacity" values="0;0.45;0" dur="4s" repeatCount="indefinite" begin="2.66s"/>
+      </circle>
+
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="24s" repeatCount="indefinite"/>
+        <circle cx="290" cy="200" r="3" fill="#00d4aa" filter="url(#err-particle-glow)" opacity="0.85"/>
+        <circle cx="160" cy="280" r="2.5" fill="#00d4aa" filter="url(#err-particle-glow)" opacity="0.6"/>
+        <circle cx="110" cy="170" r="2" fill="#00d4aa" filter="url(#err-particle-glow)" opacity="0.5"/>
+        <circle cx="240" cy="115" r="2.5" fill="#00d4aa" filter="url(#err-particle-glow)" opacity="0.7"/>
+      </g>
+
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="360 200 200" to="0 200 200" dur="36s" repeatCount="indefinite"/>
+        <circle cx="340" cy="180" r="2" fill="#00d4aa" filter="url(#err-particle-glow)" opacity="0.45"/>
+        <circle cx="60" cy="220" r="2" fill="#00d4aa" filter="url(#err-particle-glow)" opacity="0.4"/>
+        <circle cx="280" cy="345" r="1.5" fill="#00d4aa" filter="url(#err-particle-glow)" opacity="0.32"/>
+        <circle cx="120" cy="55" r="1.5" fill="#00d4aa" filter="url(#err-particle-glow)" opacity="0.3"/>
+      </g>
+
+      <g filter="url(#err-mark-glow)">
+        <rect x="172" y="172" width="56" height="56" rx="14" fill="url(#err-brand)">
+          <animate attributeName="opacity" values="0.85;1;0.85" dur="3.5s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+    </svg>
+  </div>
+
+  <h1 class="error-code">404</h1>
+  <p class="error-message">No shelf stocks this slot.</p>
+  <p class="error-detail">The steward looked. The catalogue does not list this subject.</p>
+
+  <div class="error-actions">
+    <a class="cta" href="{{ get_url(path='/') }}">
+      <strong>Return home</strong>
+      <span>The framework's front door.</span>
+    </a>
+    <a class="cta" href="{{ get_url(path='/concept/') }}">
+      <strong>Read the concept</strong>
+      <span>The fabric in evo's own words.</span>
+    </a>
+  </div>
+</article>
+{% endblock %}
