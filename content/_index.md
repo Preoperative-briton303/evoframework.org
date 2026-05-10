@@ -217,17 +217,18 @@ canonical demonstration of every framework function.</p>
 </div>
 
 <div class="card">
-<h3>evo-device-volumio</h3>
+<h3>Your distribution here</h3>
 <div class="card-meta">
-<span class="pill pill-info">Vendor</span>
-<span class="pill pill-warn">Dormant</span>
+<span class="pill pill-muted">Open</span>
 </div>
-<p>The first vendor distribution. Adopts evo-device-audio by name and
-will add Volumio-specific plugins under <code>com.volumio.*</code>,
-branding, and packaging on top.</p>
+<p>The framework supports an open set of vendor distributions. Adopt a
+reference generic device by name, add catalogue choices, branding,
+product-specific plugins, and packaging. The pattern is the same for
+every domain. The
+<a href="https://github.com/foonerd/evo-core/blob/main/docs/engineering/BOUNDARY.md">BOUNDARY</a>
+document is the normative checklist.</p>
 <div class="card-links">
-<a href="https://github.com/foonerd/evo-device-volumio">Source</a>
-<a href="https://github.com/foonerd/evo-device-volumio-artefacts">Artefacts</a>
+<a href="/build/">Build a distribution</a>
 </div>
 </div>
 
@@ -402,8 +403,8 @@ catalogue files.
 
 Pre-1.0. The framework runtime and the SDK are written; the audio
 reference generic device exists and is the canonical demonstration of
-every core function; the first vendor distribution is scaffolded and
-dormant pending its first vendor-specific plugin.
+every core function; vendor distributions are an open invitation,
+not yet announced.
 
 The framework is licensed under the Business Source License 1.1; the
 SDK, the operator CLI, the trust primitive, the proc macro, and the

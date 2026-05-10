@@ -67,12 +67,11 @@ device first. The pattern is in the same boundary document; the
 worked example for "how to scaffold a brand-neutral plugin set for a
 domain" is `evo-device-audio` itself.
 
-The vendor-side worked example, with every release plane, signing
-key, and CI workflow named, is
-[evo-device-volumio's SHOWCASE.md](https://github.com/foonerd/evo-device-volumio/blob/main/SHOWCASE.md).
-Anywhere it says "Volumio" or "Raspberry Pi", a future vendor reads
-their own brand and their own target hardware. The pattern survives
-the substitution.
+The vendor-side methodology, with every release plane, signing key,
+and CI workflow named, is documented as a separate showcase
+artefact. It is written so that anywhere it names a specific brand
+or target hardware, a future vendor reads their own brand and their
+own hardware; the pattern survives the substitution.
 
 ## I am running a device
 

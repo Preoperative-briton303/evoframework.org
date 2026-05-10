@@ -34,7 +34,7 @@ The documents are grouped by what you are doing.
 |----------|---------|
 | [BOUNDARY.md](https://github.com/foonerd/evo-core/blob/main/docs/engineering/BOUNDARY.md) | The normative split between framework and distribution. |
 | [VENDOR_CONTRACT.md](https://github.com/foonerd/evo-core/blob/main/docs/engineering/VENDOR_CONTRACT.md) | Actor taxonomy, namespace governance, vendor signing posture, trust roots. |
-| [evo-device-volumio SHOWCASE.md](https://github.com/foonerd/evo-device-volumio/blob/main/SHOWCASE.md) | Worked example: source repo, artefacts repo, signed pieces, three planes, three workflows. |
+| Vendor SHOWCASE methodology | Worked example: source repo, artefacts repo, signed pieces, three planes, three workflows. (Published with the first vendor distribution.) |
 
 ## Consumers
 

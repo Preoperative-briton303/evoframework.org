@@ -26,11 +26,10 @@ independently versioned and signed; the operator has the final word
 on local trust.
 
 The framework is pre-1.0. The audio reference generic device exists
-and is the canonical demonstration of every framework function. The
-first vendor distribution is scaffolded and dormant pending its
-first vendor-specific plugin or branding work. Single-maintainer
-driven; open to contributions on the contracts the engineering
-documents name.
+and is the canonical demonstration of every framework function.
+Vendor distributions are an open invitation, not yet announced.
+Single-maintainer driven; open to contributions on the contracts the
+engineering documents name.
 
 ## Actors {#actors}
 
@@ -54,9 +53,9 @@ are in
 The framework runtime in `evo-core` is licensed under the Business
 Source License 1.1. The plugin SDK, the operator CLI, the trust
 primitive, the proc macro, and the example plugins are licensed
-under the Apache License, Version 2.0. The reference generic devices
-(`evo-device-audio`) and the vendor distributions
-(`evo-device-volumio`) are Apache 2.0. The
+under the Apache License, Version 2.0. The reference generic
+devices (`evo-device-<domain>`) and any vendor distributions are
+Apache 2.0. The
 [evo-catalogue-schemas](https://github.com/foonerd/evo-catalogue-schemas)
 repository is Apache 2.0. This website is Apache 2.0.
 
@@ -107,10 +106,10 @@ The project's current state, in plain terms:
   brand-neutral plugins (MPD playback, ALSA composition, file-tag
   metadata, local artwork) signed by the evo project's commons
   signing key.
-- The first vendor distribution is scaffolded and dormant: the
-  catalogue is in place, the trust material is bundled, and the
-  release planes are wired; vendor-specific plugins and branding
-  have not yet landed.
+- Vendor distributions are an open invitation. The framework, the
+  reference generic device, and the catalogue schemas are stable
+  contracts that any vendor can adopt; no specific vendor adoption
+  is announced yet.
 - The website you are reading is itself pre-1.0 scaffolding;
   content lands as it is written.
 

@@ -70,35 +70,202 @@ projection. All outbound behaviour of the system is either a
 projection on demand or a streamed happening on the fabric's
 notification surface. There is no side channel.
 
-```
-   plugin   plugin   plugin   plugin
-       \      |        |       /
-        \     |        |      /
-            stock slots
-              |
-              v
-   +------------------------------+
-   |       THE STEWARD            |
-   |  sole authority              |
-   |  no side channel             |
-   |                              |
-   |  catalogue . subjects .      |
-   |  relations . admission .     |
-   |  projections . ledger .      |
-   |  happenings bus              |
-   +------------------------------+
-              |
-              v
-       projections / happenings
-              |
-              v
-          consumers
-```
+<div class="hub-diagram-wrap">
+<svg class="hub-diagram" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hub-diagram-title hub-diagram-desc">
+<title id="hub-diagram-title">The hub: plugins stock slots on the steward, the steward emits projections to consumers</title>
+<desc id="hub-diagram-desc">Four plugins at the top fan in to a single point that arrows into the steward, which sits as the centerpiece. The steward's output fans out to four consumer nodes below: frontend, CLI, bridge, automation. Animated particles trace the data flow.</desc>
 
+<defs>
+<linearGradient id="hub-plugin-bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#162a40"/>
+<stop offset="100%" stop-color="#0c1d30"/>
+</linearGradient>
+
+<linearGradient id="hub-steward-bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#0d2236"/>
+<stop offset="50%" stop-color="#143a5c"/>
+<stop offset="100%" stop-color="#0a1d30"/>
+</linearGradient>
+
+<linearGradient id="hub-brand" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#00d4aa"/>
+<stop offset="100%" stop-color="#00a080"/>
+</linearGradient>
+
+<radialGradient id="hub-glow-bg" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#00d4aa" stop-opacity="0.18"/>
+<stop offset="60%" stop-color="#00d4aa" stop-opacity="0.04"/>
+<stop offset="100%" stop-color="#00d4aa" stop-opacity="0"/>
+</radialGradient>
+
+<filter id="hub-card-glow" x="-15%" y="-15%" width="130%" height="130%">
+<feGaussianBlur stdDeviation="3" result="blur"/>
+<feFlood flood-color="#00d4aa" flood-opacity="0.18"/>
+<feComposite in2="blur" operator="in" result="glow"/>
+<feMerge>
+<feMergeNode in="glow"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+
+<filter id="hub-steward-glow" x="-10%" y="-15%" width="120%" height="130%">
+<feGaussianBlur stdDeviation="9" result="blur"/>
+<feFlood flood-color="#00d4aa" flood-opacity="0.34"/>
+<feComposite in2="blur" operator="in" result="glow"/>
+<feMerge>
+<feMergeNode in="glow"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+
+<filter id="hub-particle-glow" x="-200%" y="-200%" width="500%" height="500%">
+<feGaussianBlur stdDeviation="2.5" result="blur"/>
+<feFlood flood-color="#00d4aa" flood-opacity="0.95"/>
+<feComposite in2="blur" operator="in" result="glow"/>
+<feMerge>
+<feMergeNode in="glow"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
+
+<marker id="hub-arrow" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+<path d="M2,2 L10,6 L2,10 z" fill="#00d4aa"/>
+</marker>
+</defs>
+
+<ellipse cx="500" cy="400" rx="540" ry="290" fill="url(#hub-glow-bg)"/>
+
+<g filter="url(#hub-card-glow)">
+<rect x="135" y="20" width="130" height="80" rx="14" fill="url(#hub-plugin-bg)" stroke="#1f3a5c" stroke-width="1"/>
+<rect x="135" y="20" width="130" height="2.5" rx="1" fill="url(#hub-brand)" opacity="0.6"/>
+<circle cx="155" cy="42" r="3" fill="#00d4aa" opacity="0.7"/>
+</g>
+<text x="200" y="68" text-anchor="middle" class="hub-plugin-label">plugin</text>
+
+<g filter="url(#hub-card-glow)">
+<rect x="335" y="20" width="130" height="80" rx="14" fill="url(#hub-plugin-bg)" stroke="#1f3a5c" stroke-width="1"/>
+<rect x="335" y="20" width="130" height="2.5" rx="1" fill="url(#hub-brand)" opacity="0.6"/>
+<circle cx="355" cy="42" r="3" fill="#00d4aa" opacity="0.7"/>
+</g>
+<text x="400" y="68" text-anchor="middle" class="hub-plugin-label">plugin</text>
+
+<g filter="url(#hub-card-glow)">
+<rect x="535" y="20" width="130" height="80" rx="14" fill="url(#hub-plugin-bg)" stroke="#1f3a5c" stroke-width="1"/>
+<rect x="535" y="20" width="130" height="2.5" rx="1" fill="url(#hub-brand)" opacity="0.6"/>
+<circle cx="555" cy="42" r="3" fill="#00d4aa" opacity="0.7"/>
+</g>
+<text x="600" y="68" text-anchor="middle" class="hub-plugin-label">plugin</text>
+
+<g filter="url(#hub-card-glow)">
+<rect x="735" y="20" width="130" height="80" rx="14" fill="url(#hub-plugin-bg)" stroke="#1f3a5c" stroke-width="1"/>
+<rect x="735" y="20" width="130" height="2.5" rx="1" fill="url(#hub-brand)" opacity="0.6"/>
+<circle cx="755" cy="42" r="3" fill="#00d4aa" opacity="0.7"/>
+</g>
+<text x="800" y="68" text-anchor="middle" class="hub-plugin-label">plugin</text>
+
+<path id="hub-in-1" d="M 200,100 Q 200,180 500,235" fill="none" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.65"/>
+<path id="hub-in-2" d="M 400,100 Q 400,180 500,235" fill="none" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.65"/>
+<path id="hub-in-3" d="M 600,100 Q 600,180 500,235" fill="none" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.65"/>
+<path id="hub-in-4" d="M 800,100 Q 800,180 500,235" fill="none" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.65"/>
+
+<circle r="3.5" fill="#00d4aa" filter="url(#hub-particle-glow)">
+<animateMotion dur="3.4s" repeatCount="indefinite" begin="0s">
+<mpath href="#hub-in-1"/>
+</animateMotion>
+</circle>
+<circle r="3.5" fill="#00d4aa" filter="url(#hub-particle-glow)">
+<animateMotion dur="3.4s" repeatCount="indefinite" begin="0.85s">
+<mpath href="#hub-in-2"/>
+</animateMotion>
+</circle>
+<circle r="3.5" fill="#00d4aa" filter="url(#hub-particle-glow)">
+<animateMotion dur="3.4s" repeatCount="indefinite" begin="1.7s">
+<mpath href="#hub-in-3"/>
+</animateMotion>
+</circle>
+<circle r="3.5" fill="#00d4aa" filter="url(#hub-particle-glow)">
+<animateMotion dur="3.4s" repeatCount="indefinite" begin="2.55s">
+<mpath href="#hub-in-4"/>
+</animateMotion>
+</circle>
+
+<line x1="500" y1="235" x2="500" y2="290" stroke="#00d4aa" stroke-width="2" marker-end="url(#hub-arrow)"/>
+<text x="514" y="270" class="hub-line-label">stock slots</text>
+
+<g filter="url(#hub-steward-glow)">
+<rect x="120" y="295" width="760" height="220" rx="22" fill="url(#hub-steward-bg)" stroke="#256086" stroke-width="1.5"/>
+<rect x="120" y="295" width="760" height="4" rx="2" fill="url(#hub-brand)"/>
+<g transform="translate(836, 311)">
+<rect width="26" height="26" rx="6" fill="url(#hub-brand)"/>
+</g>
+</g>
+<text x="500" y="346" text-anchor="middle" class="hub-steward-label">THE STEWARD</text>
+<text x="500" y="376" text-anchor="middle" class="hub-steward-sub">sole authority . no side channel</text>
+<line x1="320" y1="395" x2="680" y2="395" stroke="#256086" stroke-width="1" opacity="0.5"/>
+<text x="500" y="425" text-anchor="middle" class="hub-steward-content">catalogue . admission . subjects . relations</text>
+<text x="500" y="453" text-anchor="middle" class="hub-steward-content">custody ledger . projections . happenings bus</text>
+
+<line x1="500" y1="525" x2="500" y2="585" stroke="#00d4aa" stroke-width="2" marker-end="url(#hub-arrow)"/>
+<text x="514" y="565" class="hub-line-label">projections / happenings</text>
+
+<path id="hub-out-1" d="M 500,585 Q 200,615 200,690" fill="none" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.65"/>
+<path id="hub-out-2" d="M 500,585 Q 400,615 400,690" fill="none" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.65"/>
+<path id="hub-out-3" d="M 500,585 Q 600,615 600,690" fill="none" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.65"/>
+<path id="hub-out-4" d="M 500,585 Q 800,615 800,690" fill="none" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.65"/>
+
+<circle r="3.5" fill="#00d4aa" filter="url(#hub-particle-glow)">
+<animateMotion dur="3.4s" repeatCount="indefinite" begin="0.4s">
+<mpath href="#hub-out-1"/>
+</animateMotion>
+</circle>
+<circle r="3.5" fill="#00d4aa" filter="url(#hub-particle-glow)">
+<animateMotion dur="3.4s" repeatCount="indefinite" begin="1.25s">
+<mpath href="#hub-out-2"/>
+</animateMotion>
+</circle>
+<circle r="3.5" fill="#00d4aa" filter="url(#hub-particle-glow)">
+<animateMotion dur="3.4s" repeatCount="indefinite" begin="2.1s">
+<mpath href="#hub-out-3"/>
+</animateMotion>
+</circle>
+<circle r="3.5" fill="#00d4aa" filter="url(#hub-particle-glow)">
+<animateMotion dur="3.4s" repeatCount="indefinite" begin="2.95s">
+<mpath href="#hub-out-4"/>
+</animateMotion>
+</circle>
+
+<g filter="url(#hub-card-glow)">
+<rect x="135" y="690" width="130" height="80" rx="14" fill="url(#hub-plugin-bg)" stroke="#1f3a5c" stroke-width="1"/>
+<rect x="135" y="687.5" width="130" height="2.5" rx="1" fill="url(#hub-brand)" opacity="0.6"/>
+</g>
+<text x="200" y="738" text-anchor="middle" class="hub-consumer-label">frontend</text>
+
+<g filter="url(#hub-card-glow)">
+<rect x="335" y="690" width="130" height="80" rx="14" fill="url(#hub-plugin-bg)" stroke="#1f3a5c" stroke-width="1"/>
+<rect x="335" y="687.5" width="130" height="2.5" rx="1" fill="url(#hub-brand)" opacity="0.6"/>
+</g>
+<text x="400" y="738" text-anchor="middle" class="hub-consumer-label">CLI</text>
+
+<g filter="url(#hub-card-glow)">
+<rect x="535" y="690" width="130" height="80" rx="14" fill="url(#hub-plugin-bg)" stroke="#1f3a5c" stroke-width="1"/>
+<rect x="535" y="687.5" width="130" height="2.5" rx="1" fill="url(#hub-brand)" opacity="0.6"/>
+</g>
+<text x="600" y="738" text-anchor="middle" class="hub-consumer-label">bridge</text>
+
+<g filter="url(#hub-card-glow)">
+<rect x="735" y="690" width="130" height="80" rx="14" fill="url(#hub-plugin-bg)" stroke="#1f3a5c" stroke-width="1"/>
+<rect x="735" y="687.5" width="130" height="2.5" rx="1" fill="url(#hub-brand)" opacity="0.6"/>
+</g>
+<text x="800" y="738" text-anchor="middle" class="hub-consumer-label">automation</text>
+</svg>
+
+<p class="hub-diagram-caption">
 Plugins stock slots on the steward and never address each other.
 Consumers address the steward, never plugins. The steward composes
 contributions around subjects and emits projections or happenings.
 This is the hub discipline the rest of the document assumes.
+</p>
+</div>
 
 Two classes of originator exist inside the fabric besides external
 requests. Appointments originate actions from time. Watches originate

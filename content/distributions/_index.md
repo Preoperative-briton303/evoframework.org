@@ -37,26 +37,6 @@ read the source if you want to see the plugin contract concretely.</p>
 </div>
 
 <div class="card">
-<h3>evo-device-volumio</h3>
-<div class="card-meta">
-<span class="pill pill-info">Vendor</span>
-<span class="pill pill-info">Audio</span>
-<span class="pill pill-warn">Dormant</span>
-</div>
-<p>The first vendor distribution. Adopts <code>evo-device-audio</code>
-by name and will add Volumio-specific plugins under
-<code>com.volumio.*</code>, branding, and packaging on top. Dormant
-pending the first vendor-specific plugin or branding work; the
-distribution-process showcase document is the canonical worked
-example for any future vendor.</p>
-<div class="card-links">
-<a href="https://github.com/foonerd/evo-device-volumio">Source</a>
-<a href="https://github.com/foonerd/evo-device-volumio-artefacts">Artefacts</a>
-<a href="https://github.com/foonerd/evo-device-volumio/blob/main/SHOWCASE.md">SHOWCASE</a>
-</div>
-</div>
-
-<div class="card">
 <h3>Your distribution here</h3>
 <div class="card-meta">
 <span class="pill pill-muted">Open</span>
@@ -86,11 +66,11 @@ references for video, home automation, and instrumentation follow
 the same pattern.
 
 Vendor distributions are signed by the vendor's own key and live
-under per-vendor namespaces (`com.volumio.*`, `com.acme.*`, etc.).
-Their job is to ship a deployable device: catalogue choices, vendor
-plugins, branding, packaging, release planes. Vendor distributions
-adopt one or more reference generic devices; they do not duplicate
-the brand-neutral work.
+under per-vendor namespaces (`com.<vendor>.*`). Their job is to ship
+a deployable device: catalogue choices, vendor plugins, branding,
+packaging, release planes. Vendor distributions adopt one or more
+reference generic devices; they do not duplicate the brand-neutral
+work.
 
 The framework, the reference generic devices, and the vendor
 distributions all release independently and are signed independently.
